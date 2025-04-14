@@ -65,7 +65,7 @@ For panoramic image segmentation, we used UNet-equiconv that uses U-Net from UNe
 - Use converter.py to convert the generated RGB masks into class label masks so they can be better used in the image segmentation
 
 2) Segmentation
-- Run the generated dataset on unet-stdconv or unet-equiconv
+- Run the generated dataset on UNet from unet_stdconv or unet_equiconv
 
 ## License
 
