@@ -1,6 +1,9 @@
 # PanOSIS - Panoramic One-Shot Image Segmentation
+![image](https://github.com/user-attachments/assets/9382d901-9d57-48c7-8c80-d7d1aa168cb3)
 
 **PanOSIS** is a one-shot image segmentation method for panoramic street-view images. 
+
+![image](https://github.com/user-attachments/assets/06c59ac2-e07f-4a1d-929f-7f33303dc9fb)
 
 ## Table of contents
 - [Datasets](#datasets)
@@ -21,7 +24,7 @@
 - Built based on Cityscapes 
 - Panoramic street view images taken outdoors with their respective semantic segmentation masks
 
-**One-Shot Streets (Ference, Jung, 2025)**
+**One-Shot Streets [(Ference, Jung, 2025)](https://www.kaggle.com/datasets/jillference/one-shot-streets)**
 - 20 classes, 7 categories
 - Built based on CVRG-Pano 
 - Panoramic street view images with their respective semantic segmentation masks generated from a single training pair from CVRG-Pano
@@ -48,8 +51,20 @@ For panoramic image segmentation, we used UNet-equiconv that uses U-Net from UNe
 - Move rectangular convolution kernels on the sphere representations of panoramic images
 
 ## Results
+![image](https://github.com/user-attachments/assets/22fcae97-bff2-48d3-adf8-f8ad1baeb439)
+
+![image](https://github.com/user-attachments/assets/9a45734c-4131-449c-8f3d-bd96f89b6a08)
+
+![image](https://github.com/user-attachments/assets/da4c74f3-59f2-4208-9d6b-f5e96de17808)
 
 ## Deployment
+
+1) Generation
+- Follow steps from [Shusko's one-shot implementation](https://github.com/boschresearch/one-shot-synthesis?tab=readme-ov-file)
+- Use converter.py to convert the generated RGB masks into class label masks so they can be better used in the image segmentation
+
+2) Segmentation
+- Run the generated dataset on unet-stdconv or unet-equiconv
 
 ## License
 
