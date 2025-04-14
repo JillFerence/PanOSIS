@@ -61,6 +61,7 @@ For panoramic image segmentation, we used UNet-equiconv that uses U-Net from UNe
 
 1) Generation
 - Follow steps from [Shusko's one-shot implementation](https://github.com/boschresearch/one-shot-synthesis?tab=readme-ov-file)
+- Note on compatible dependencies: kornia 0.6.8, torch 2.4.1+cu121, conda 12.1
 - Use converter.py to convert the generated RGB masks into class label masks so they can be better used in the image segmentation
 
 2) Segmentation
