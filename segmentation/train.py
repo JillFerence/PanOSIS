@@ -13,17 +13,27 @@ from dataloader import Segmentation_Dataset
 from unet_stdconv import UNet
 import re
 
-def display(display_list):
-    plt.figure(figsize=(15, 15))
+from PIL import Image
+import torchvision.transforms.functional as F
 
-    title = ['Input Image', 'True Mask', 'Predicted Mask']
+def display(display_list, epoch):
 
-    for i in range(len(display_list)):
-        plt.subplot(1, len(display_list), i+1)
-        plt.title(title[i])
-        plt.imshow(display_list[i].permute(1, 2, 0))
+    # define prefix path
+    prefix = "results/epoch_" + str(epoch) + "_"
+    # cdefine paths for each gt img, gt mask and pred mask
+    gt_img_path = prefix + "gt_img.png"
+    gt_mask_path = prefix + "gt_mask.png"
+    pred_mask_path = prefix + "pred_mask.png"
+    # shove them in one array
+    paths = [gt_img_path, gt_mask_path, pred_mask_path]
+
+    # for each image
+    for i in range(3):
+        # turn off the axis
         plt.axis('off')
-    return plt
+        plt.imshow(display_list[i].permute(1,2,0))
+        # save to path
+        plt.savefig(paths[i], bbox_inches='tight', pad_inches=0)
 
 def create_mask(pred_mask):
     pred_mask = torch.argmax(pred_mask, dim=1).detach()
@@ -43,6 +53,12 @@ if __name__ == "__main__":
     mask_list = numerical_sort(os.listdir(mask_path))
     image_list = [os.path.join(image_path, i) for i in image_list]
     mask_list = [os.path.join(mask_path, i) for i in mask_list]
+
+    # make results dir
+    try:
+        os.mkdir("results")
+    except FileExistsError:
+        print("results folder already exists. continuing...")
 
     EPOCHS = 40
     BATCH_SIZE = 16
@@ -88,7 +104,7 @@ if __name__ == "__main__":
             IMG = batch["IMAGE"][0, :, : ,:].to(device).unsqueeze(0)
             MASK = batch["MASK"][0, :, :, :].to(device).unsqueeze(0)
             pred_mask = unet.to(device)(IMG)
-            display([IMG[0].cpu(), MASK[0].cpu(), create_mask(pred_mask).cpu()]).show()
+            display([IMG[0].cpu(), MASK[0].cpu(), create_mask(pred_mask).cpu()], epoch + 1)
 
     plt.plot(np.arange(len(losses)), losses)
     plt.xlabel('Epoch')
