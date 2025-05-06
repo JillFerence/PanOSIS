@@ -1,4 +1,8 @@
 """
+Code base from: https://github.com/boschresearch/one-shot-synthesis
+"""
+
+"""
 To achieve a good quality-diversity trade-off, we provide recommended model configurations
 for different image resolutions. Firstly, it is recommended to have the input noise dimensions
 between 3 and 7. Secondly, it is advisable to keep the layout representation dims roughly as 32x32.
