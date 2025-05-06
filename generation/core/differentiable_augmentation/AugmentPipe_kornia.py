@@ -1,3 +1,7 @@
+"""
+Code base from: https://github.com/boschresearch/one-shot-synthesis
+"""
+
 import torch
 import kornia
 import random
