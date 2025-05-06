@@ -1,4 +1,8 @@
 """
+Code base from: https://github.com/boschresearch/one-shot-synthesis
+"""
+
+"""
 Go over all experiments in the folder with checkpoints
 and visualize losses & logits in png format.
 """
