@@ -1,3 +1,7 @@
+"""
+Code base from: https://github.com/boschresearch/one-shot-synthesis
+"""
+
 import argparse
 import pickle
 import os
