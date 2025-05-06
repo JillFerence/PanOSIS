@@ -41,27 +41,36 @@ def numerical_sort(file_list):
 
 if __name__ == "__main__":
     """ Create a directory """
-    create_dir("OneShotMask-converted")
+    #create_dir("OneShotMask-converted")
+    data_path = "segmentation/data/mapillary-vistas/"
+    save_path = "segmentation/data/mapillary-vistas/masks/"
 
     """ Dataset paths """
-    images = numerical_sort(glob(os.path.join("normal/images", "*.png")))
-    masks = numerical_sort(glob(os.path.join("normal/mask", "*.png")))
+    images = numerical_sort(glob(os.path.join(data_path, "images", "*.jpg")))
+    masks = numerical_sort(glob(os.path.join(data_path, "rgb-masks", "*.png")))
 
     print(f"Images: {len(images)}")
     print(f"RGB Masks: {len(masks)}")
 
-    """ VOC 2012 dataset: colormap and class names """
-    VOC_COLORMAP = [
-        [0, 0, 0],  [255, 0, 0],  [0, 255, 0],  [255, 255, 0],
-        [0, 0, 255],  [255, 0, 255],  [0, 255, 255],  [255, 255, 255]
+    """ CVRG-Pano Dataset """
+    # 20 semantic classes, 7 categories
+    CVRG_COLORMAP = [
+        [0, 0, 0],  
+        [255, 0, 0],  
+        [0, 255, 0],  
+        [255, 255, 0],
+        [0, 0, 255],  
+        [255, 0, 255],  
+        [0, 255, 255],  
+        [255, 255, 255]
     ]
 
-    VOC_CLASSES = [
+    CVRG_CLASSES = [
         0, 1, 2, 3, 4, 5, 6, 7
     ]
-
+        
     """ Displaying the class name and its pixel value """
-    for name, color in zip(VOC_CLASSES, VOC_COLORMAP):
+    for name, color in zip(CVRG_CLASSES, CVRG_COLORMAP):
         print(f"{name} - {color}")
 
     count = 0
@@ -80,13 +89,13 @@ if __name__ == "__main__":
         # mask = cv2.resize(mask, (320, 320))
 
         """ Processing the mask to one-hot mask """
-        processed_mask = process_mask(mask, VOC_COLORMAP)
+        processed_mask = process_mask(mask, CVRG_COLORMAP)
 
         """ Converting one-hot mask to single channel mask """
         
         grayscale_mask = np.argmax(processed_mask, axis=-1)
         grayscale_mask = np.expand_dims(grayscale_mask, axis=-1)
 
-        final_path = os.path.join("converted", (str(count) + ".png"))
+        final_path = os.path.join(save_path, (str(count) + ".png"))
         cv2.imwrite(final_path, grayscale_mask)
         count += 1
