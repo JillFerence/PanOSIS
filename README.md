@@ -1,9 +1,20 @@
 # PanOSIS - Panoramic One-Shot Image Segmentation
-![image](https://github.com/user-attachments/assets/9382d901-9d57-48c7-8c80-d7d1aa168cb3)
+![image](https://github.com/user-attachments/assets/393241a2-711a-479c-acc1-fcdd982a3d5d)
+
 
 **PanOSIS** is a one-shot image segmentation method for panoramic street-view images. 
 
-![image](https://github.com/user-attachments/assets/06c59ac2-e07f-4a1d-929f-7f33303dc9fb)
+- Task: One-shot image segmentation for panoramic street view images
+- Problem: Despite the potential for product development and urban environment analysis, panorama suffers from limited annotated datasets for segmentation purposes and lack of research
+- Solution:
+  - One-shot synthesis: Generating annotated panoramic dataset from a single image-mask pair
+   → Addressing dataset limitations
+  - Equirectangular convolutions: Modifying conventional models (i.e. U-Net) to better conform to panoramic distortions
+   → Improving segmentation accuracy
+- Contribution: Demonstrating the potential of one-shot learning for panoramic image segmentation
+
+![image](https://github.com/user-attachments/assets/e4400d18-dfbd-49a1-a7e2-e521d52a4009)
+
 
 ## Table of contents
 - [Datasets](#datasets)
@@ -51,11 +62,21 @@ For panoramic image segmentation, we used UNet-equiconv that uses U-Net from UNe
 - Move rectangular convolution kernels on the sphere representations of panoramic images
 
 ## Results
-![image](https://github.com/user-attachments/assets/22fcae97-bff2-48d3-adf8-f8ad1baeb439)
+### Image Generation
 
-![image](https://github.com/user-attachments/assets/9a45734c-4131-449c-8f3d-bd96f89b6a08)
+![image](https://github.com/user-attachments/assets/90547b6e-0773-404c-9ce5-67a68fac114e)
 
-![image](https://github.com/user-attachments/assets/da4c74f3-59f2-4208-9d6b-f5e96de17808)
+### Image Segmentation
+
+![image](https://github.com/user-attachments/assets/5b857308-7140-4935-a996-91617fd86eed)
+
+![image](https://github.com/user-attachments/assets/197d0b1f-67d5-4ced-8ac8-b343636a3dc8)
+
+![image](https://github.com/user-attachments/assets/3f2889bc-63d7-4753-b9dd-534d3657e26a)
+
+![image](https://github.com/user-attachments/assets/30282807-ca28-4d14-b634-fe3779740b38)
+
+![image](https://github.com/user-attachments/assets/3c0dc905-0c33-4fcc-a6ec-4e6c210f8973)
 
 ## Deployment
 
