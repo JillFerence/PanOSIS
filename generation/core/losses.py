@@ -1,3 +1,7 @@
+"""
+Code base from: https://github.com/boschresearch/one-shot-synthesis
+"""
+
 import torch
 import torch.nn.functional as F
 
