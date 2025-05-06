@@ -1,3 +1,7 @@
+"""
+Code base from: https://github.com/boschresearch/one-shot-synthesis
+"""
+
 from .AugmentPipe_kornia import AugmentPipe_kornia
 
 
