@@ -1,3 +1,7 @@
+"""
+Code base from: https://github.com/boschresearch/one-shot-synthesis
+"""
+
 import config
 from core import dataloading, models, utils, losses, tracking
 from core.differentiable_augmentation import diff_augm
